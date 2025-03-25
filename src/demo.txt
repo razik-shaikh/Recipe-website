@@ -1,0 +1,18 @@
+src/
+├── components/
+│   ├── recipedetails/
+│   │   ├── header.jsx
+│   │   ├── ingredient.jsx
+│   │   └── instruction.jsx
+│   ├── FeaturedRecipe.jsx
+│   ├── FullRecipeDetail.jsx
+│   ├── RecipeCard.jsx
+│   ├── SavedRecipeCard.jsx
+│   └── SavedRecipes.jsx
+├── pages/
+│   ├── NotFound.jsx
+│   └── RecipeNotFound.jsx
+├── redux/
+│   ├── store.js
+│   ├── recipeSlice.js
+│   └── savedRecipeSlice.js

@@ -1,0 +1,28 @@
+/* Typing Animation */
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* Apply the typing effect */
+.typing-animation {
+  display: inline-block;
+  font-size: 1.2rem;
+  /* Adjust size as needed */
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 4px solid black;
+  /* This creates the cursor effect */
+  animation: typing 3.5s steps(30) 1s 1 normal both, blink 0.75s step-end infinite;
+}
