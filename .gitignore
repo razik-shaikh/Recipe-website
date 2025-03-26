@@ -22,3 +22,7 @@ package-lock.json
 *.njsproj
 *.sln
 *.sw?
+#tailwind css
+tailwind.config.js
+
+vite.config.js

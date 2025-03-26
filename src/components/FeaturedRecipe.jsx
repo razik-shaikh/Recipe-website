@@ -20,20 +20,17 @@ const FeaturedRecipe = () => {
     const { recipes, search } = useSelector(state => state.recipes);
     const savedRecipes = useSelector((state) => state.saveRecipe.savedRecipesListRedux); // Access saved recipes from Redux store
 
-    async function fetchData(event, query = "") {
+    async function fetchData(event) {
         event.preventDefault();
         //for empty search
-        if (!query.trim()) {
+        if (!search.trim()) {
             setError("Please enter a search term!");
             return;
         }
 
-        let apiUrl = "";
-        if (query) {
-            apiUrl = `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`;
-        } else {
-            apiUrl = `https://www.themealdb.com/api/json/v1/1/random.php`;
-        }
+        
+           const apiUrl = `https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`;
+        
 
         try {
             setError(null);
@@ -54,6 +51,24 @@ const FeaturedRecipe = () => {
             console.log(`Oops Something went wrong : ${error}`);
         }
     }
+
+    //function for random recipe
+    async function fetchRandomRecipe(event) {
+        event.preventDefault();
+    
+        const apiUrl = `https://www.themealdb.com/api/json/v1/1/random.php`;
+    
+        try {
+            setError(null);
+            const { data } = await axios.get(apiUrl);
+            dispatch(setRecipes(data.meals || []));
+            setIsSearch(true);
+        } catch (error) {
+            setError("Failed to fetch recipes. Try again!");
+            console.error("API Error:", error);
+        }
+    }
+    
 
     function handleInputChange(event) {
         dispatch(setSearch(event.target.value));
@@ -98,7 +113,7 @@ const FeaturedRecipe = () => {
                         </p>
 
                         <button
-                            onClick={(e) => fetchData(e)}
+                            onClick={fetchRandomRecipe}
                             className="bg-cream text-gray-900 px-6 py-2 rounded-full font-inter font-medium bg-white/60 hover:bg-white/90 transition-colors mx-auto block"
                         >
                             Surprise Recipe
@@ -106,7 +121,7 @@ const FeaturedRecipe = () => {
 
                         {/* Search bar */}
                         <div className="search-bar flex w-full max-w-2xl mt-8 pb-4">
-                            <form action="" onSubmit={(e) => fetchData(e, search)} className="flex w-full">
+                            <form action="" onSubmit={fetchData} className="flex w-full">
                                 <input
                                     value={search}
                                     onChange={handleInputChange}
