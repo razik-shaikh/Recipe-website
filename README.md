@@ -65,7 +65,7 @@ The app also includes a **Surprise Me** feature for random recipe suggestions.
 ---
 
 ## 🌐 Live Demo
-👉 [View Deployed Project](https://your-netlify-link.netlify.app/)
+👉 [View Deployed Project](https://themealexplorer.netlify.app/)
 
 ---
 
