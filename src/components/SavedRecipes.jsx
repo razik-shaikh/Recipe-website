@@ -8,7 +8,7 @@ function SavedRecipes() {
 
   return (
     <>
-
+   
       {/* Check if there are saved recipes */}
       {savedRecipes.length === 0 ? (
         <p className="text-center text-lg text-gray-500">You have no saved recipes yet.</p>

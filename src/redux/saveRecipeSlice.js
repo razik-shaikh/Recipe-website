@@ -8,7 +8,7 @@ const saveRecipeSlice = createSlice({
     name: 'saveRecipe',
     initialState,
     reducers: {
-        saveRecipeRedux: (state, action) => {
+        saveRecipeRedux: (state, action) => {  
             state.savedRecipesListRedux.push(action.payload);
         },
         removeSavedRecipeRedux: (state, action) => {

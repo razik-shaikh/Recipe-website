@@ -7,7 +7,7 @@ const initialState = {
 
 // Create a slice
 const recipeSlice = createSlice({
-    name: 'recipes',
+    name: 'recipes',  
     initialState,
     reducers: {
         //Define reducers

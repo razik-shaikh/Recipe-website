@@ -57,7 +57,7 @@ function RecipeCard({ detail }) {
                         alt="Card Image"
                         loading='lazy' 
                     />
-                    <div className="px-6 py-2">
+                    <div className="px-6 py-2">  
                         <h2 className="font-serif font-semibold text-2xl text-gray-800 ">{detail.strMeal}</h2>
                     </div>
                     <div className="px-6 py-3 flex justify-between items-center">

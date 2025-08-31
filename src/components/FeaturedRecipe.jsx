@@ -133,7 +133,7 @@ const FeaturedRecipe = () => {
                         loading='lazy'
                     />
                     <div className="absolute inset-0 bg-black/40" />
-                </div>
+                </div>  
                 <div className="relative container mx-auto flex flex-col items-center px-4">
 
                     <div className="max-w-2xl text-cream animate-fadeIn mt-8 md:mt-4">
@@ -179,7 +179,7 @@ const FeaturedRecipe = () => {
                                     value={search}
                                     onChange={handleInputChange}
                                     type="text"
-                                    placeholder="Search for recipes...like Veg, cake, etc."
+                                    placeholder="Search by Ingredient or name recipes...like Eggs, Lime, cake, etc."
                                     className="w-full text-lg px-2 py-2 pl-8 rounded-full bg-white-100 border-black focus:outline-none focus:ring-2 focus:ring-white/30 transition-all font-inter"
                                 />
                                 <button

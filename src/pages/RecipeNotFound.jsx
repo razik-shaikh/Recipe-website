@@ -10,7 +10,7 @@ const NotFound = () => {
           Sorry, we couldn't find any recipes matching your search. Please try again with a different term.
         </p>
         
-      </div>
+      </div>  
     </div>
   );
 };

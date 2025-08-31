@@ -16,7 +16,7 @@ const SavedRecipeCard = ({ item }) => {
 
         dispatch(removeSavedRecipeRedux(item));
         toast.success('Recipe removed from saved list.');
-
+   
     }
 
 

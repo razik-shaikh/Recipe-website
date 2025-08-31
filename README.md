@@ -29,13 +29,13 @@ The app also includes a **Surprise Me** feature for random recipe suggestions.
 ## 📸 Screenshots
 
 ### 🔍 Home & Search
-![Search Screenshot](./screenshots/search.png)
+![Search Screenshot](./screenshots/Home.jpg)
 
-### 📖 Recipe Details
-![Recipe Details Screenshot](./screenshots/details.png)
+### 📖 Recipe cards
+![Recipe Details Screenshot](./screenshots/cards.png)
 
-### 🎲 Surprise Me Feature
-![Surprise Screenshot](./screenshots/surprise.png)
+### 🎲 Saved Recipe
+![Surprise Screenshot](./screenshots/Savedrecipe.png)
 
 ---
 

@@ -7,5 +7,5 @@ const store = configureStore({
         recipes: recipeReducer,
         saveRecipe: saveRecipeReducerStore,
     },
-});
+});  
 export default store;

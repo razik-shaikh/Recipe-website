@@ -20,7 +20,7 @@ const FullRecipeDetail = () => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            const jsonData = await response.json();
+            const jsonData = await response.json();  
             // console.log(jsonData.meals[0]);
             setRecipeData(jsonData.meals[0]);
         } catch (error) {
