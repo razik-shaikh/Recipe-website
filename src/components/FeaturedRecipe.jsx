@@ -14,50 +14,89 @@ const FeaturedRecipe = () => {
     // For scroll
     const scrollRef = useRef(null);
 
-
-
     const dispatch = useDispatch();
+    const [searchType, setSearchType] = useState("ingredient"); // "name" ya "ingredient"
     const { recipes, search } = useSelector(state => state.recipes);
     const savedRecipes = useSelector((state) => state.saveRecipe.savedRecipesListRedux); // Access saved recipes from Redux store
 
+
+    // async function fetchData(event) {
+    //     event.preventDefault();
+    //     //for empty search
+    //     if (!search.trim()) {
+    //         setError("Please enter a search term!");
+    //         return;
+    //     }
+
+
+    //     //    const apiUrl = `https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`;
+    //     const apiUrl = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${search}`;
+
+
+
+    //     try {
+    //         setError(null);
+    //         const { data } = await axios.get(apiUrl);
+    //         if (data.meals) {
+    //             dispatch(setRecipes(data.meals));
+    //         // let response = await fetch(apiUrl);
+    //         // if (!response.ok) {
+    //         //     throw new Error("Something went wrong");
+    //         // }
+    //         // const jsonData = await response.json();
+    //         } else {
+    //             dispatch(setRecipes([]));
+    //         }
+    //         setIsSearch(true);
+    //     } catch (error) {
+    //         setError(error.message); // Show error message in UI
+    //         console.log(`Oops Something went wrong : ${error}`);
+    //     }
+    // }
+
+    //function for random recipe
+
+    // fetch recipe by ingredient and name both
     async function fetchData(event) {
         event.preventDefault();
-        //for empty search
         if (!search.trim()) {
             setError("Please enter a search term!");
             return;
         }
 
-        
-           const apiUrl = `https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`;
-        
+        let apiUrl = "";
+        if (searchType === "name") {
+            apiUrl = `https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`;
+        } else if (searchType === "ingredient") {
+            apiUrl = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${search}`;
+        }
 
         try {
             setError(null);
             const { data } = await axios.get(apiUrl);
+
             if (data.meals) {
                 dispatch(setRecipes(data.meals));
-            // let response = await fetch(apiUrl);
-            // if (!response.ok) {
-            //     throw new Error("Something went wrong");
-            // }
-            // const jsonData = await response.json();
             } else {
                 dispatch(setRecipes([]));
             }
             setIsSearch(true);
         } catch (error) {
-            setError(error.message); // Show error message in UI
-            console.log(`Oops Something went wrong : ${error}`);
+            setError("Failed to fetch recipes. Try again!");
+            console.error("API Error:", error);
         }
     }
 
-    //function for random recipe
+
+
+
+
+
     async function fetchRandomRecipe(event) {
         event.preventDefault();
-    
+
         const apiUrl = `https://www.themealdb.com/api/json/v1/1/random.php`;
-    
+
         try {
             setError(null);
             const { data } = await axios.get(apiUrl);
@@ -68,7 +107,7 @@ const FeaturedRecipe = () => {
             console.error("API Error:", error);
         }
     }
-    
+
 
     function handleInputChange(event) {
         dispatch(setSearch(event.target.value));
@@ -118,6 +157,20 @@ const FeaturedRecipe = () => {
                         >
                             Surprise Recipe
                         </button>
+                        <div className="flex justify-center mt-6">
+                            <select
+                                value={searchType}
+                                onChange={(e) => setSearchType(e.target.value)}
+                                className="px-4 py-2 rounded-full border border-gray-300 shadow-sm 
+               bg-white text-gray-700 font-medium focus:outline-none 
+               focus:ring-2 focus:ring-red-400 focus:border-red-400 
+               hover:border-gray-400 transition duration-200 ease-in-out"
+                            >
+                                <option value="name">🔍 Search by Name</option>
+                                <option value="ingredient">🥕 Search by Ingredient</option>
+                            </select>
+                        </div>
+
 
                         {/* Search bar */}
                         <div className="search-bar flex w-full max-w-2xl mt-8 pb-4">
@@ -136,6 +189,7 @@ const FeaturedRecipe = () => {
                                     <FaSearch className="text-white" />
                                 </button>
                             </form>
+
                         </div>
                         {/* Display Error if API fails */}
                         {error && <p className="text-red-400 text-center mt-2">{error}</p>}
